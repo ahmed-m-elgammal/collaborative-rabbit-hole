@@ -1,0 +1,54 @@
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS Files
+Thumbs.db
+desktop.ini
+.Spotlight-V100
+.Trashes
+
+# Node modules (if added in future)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+*.zip
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Chrome Extension
+*.pem
+*.crx
+key.pem
+
+# Development and debugging
+debug.log
+console.log
+.cache/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Optional documentation
+docs/_build/
