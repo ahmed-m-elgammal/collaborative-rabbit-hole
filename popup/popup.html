@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rabbit Hole</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1>🐰 Rabbit Hole</h1>
+        <p class="tagline">Track your journey through knowledge</p>
+      </div>
+    </header>
+
+    <main>
+      <!-- Current Journey Status -->
+      <section class="journey-status" id="journeyStatus">
+        <div class="status-card">
+          <div class="status-header">
+            <h2 id="journeyTitle">No Active Journey</h2>
+            <button class="btn-icon" id="startJourneyBtn" title="Start New Journey">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="stats-grid" id="statsGrid">
+            <div class="stat-item">
+              <div class="stat-value" id="nodeCount">0</div>
+              <div class="stat-label">Pages</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="duration">0m</div>
+              <div class="stat-label">Time</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="depth">0</div>
+              <div class="stat-label">Depth</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Current Page Note -->
+      <section class="note-section" id="noteSection">
+        <h3>Current Page</h3>
+        <div class="current-page" id="currentPageInfo">
+          <div class="page-title" id="currentPageTitle">No page selected</div>
+        </div>
+        
+        <div class="note-input-wrapper">
+          <textarea 
+            id="noteInput" 
+            placeholder="Add a note about this page... Why did you come here? What did you learn?"
+            rows="3"
+          ></textarea>
+          <div class="note-actions">
+            <button class="btn-secondary btn-sm" id="ahaMomentBtn">
+              ⭐ Aha! Moment
+            </button>
+            <button class="btn-primary btn-sm" id="saveNoteBtn">
+              Save Note
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Actions -->
+      <section class="actions">
+        <button class="btn-primary btn-full" id="viewVisualizationBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          View Journey Map
+        </button>
+      </section>
+
+      <!-- Recent Journeys -->
+      <section class="recent-journeys" id="recentJourneys">
+        <h3>Recent Journeys</h3>
+        <div class="journey-list" id="journeyList">
+          <div class="empty-state">
+            Start exploring to create your first journey!
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#" id="settingsLink">Settings</a>
+        <a href="#" id="exportLink">Export</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../db.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
