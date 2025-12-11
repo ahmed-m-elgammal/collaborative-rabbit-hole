@@ -8,7 +8,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 
 1. **Fork and Clone**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/collaborative-rabbit-hole.git
+   git clone https://github.com/ahmed-m-elgammal/collaborative-rabbit-hole.git
    cd collaborative-rabbit-hole
    ```
 
@@ -164,3 +164,4 @@ By contributing, you agree that your contributions will be licensed under the MI
 ---
 
 **Happy Contributing! 🚀**
+
