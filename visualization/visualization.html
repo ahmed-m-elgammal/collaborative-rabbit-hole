@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Visualization - Rabbit Hole</title>
+    <link rel="stylesheet" href="visualization.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>🐰 Rabbit Hole</h1>
+                <button class="btn-close" id="closeBtn" title="Close">✕</button>
+            </div>
+
+            <!-- Journey selector -->
+            <div class="journey-selector">
+                <label for="journeySelect">Journey</label>
+                <select id="journeySelect" class="select-input">
+                    <option value="">Select a journey...</option>
+                </select>
+            </div>
+
+            <!-- Journey info -->
+            <div class="journey-info" id="journeyInfo">
+                <h3 id="journeyTitle">No Journey Selected</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Nodes</span>
+                        <span class="info-value" id="infoNodes">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Duration</span>
+                        <span class="info-value" id="infoDuration">0m</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Depth</span>
+                        <span class="info-value" id="infoDepth">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Branches</span>
+                        <span class="info-value" id="infoBranches">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls-section">
+                <h4>Controls</h4>
+
+                <div class="control-group">
+                    <label>Zoom</label>
+                    <div class="button-group">
+                        <button class="btn-control" id="zoomInBtn">+</button>
+                        <button class="btn-control" id="zoomResetBtn">Reset</button>
+                        <button class="btn-control" id="zoomOutBtn">−</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="showDeadEnds" checked>
+                        Highlight Dead Ends
+                    </label>
+                </div>
+
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="showAhaMoments" checked>
+                        Highlight Aha! Moments
+                    </label>
+                </div>
+
+                <div class="control-group">
+                    <label>Color by</label>
+                    <select id="colorMode" class="select-input">
+                        <option value="time">Time Spent</option>
+                        <option value="depth">Depth</option>
+                        <option value="drift">Topic Drift</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Insights -->
+            <div class="insights-section" id="insightsSection">
+                <h4>Insights</h4>
+                <div id="insightsList"></div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions-section">
+                <button class="btn-primary btn-full" id="exportBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Export Journey
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main visualization area -->
+        <main class="main-content">
+            <div class="visualization-container">
+                <svg id="journeyGraph"></svg>
+
+                <!-- Loading overlay -->
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loader"></div>
+                    <p>Loading journey...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Node detail panel (overlay) -->
+        <div class="node-detail-panel" id="nodeDetailPanel">
+            <div class="panel-header">
+                <h3 id="nodeDetailTitle">Node Details</h3>
+                <button class="btn-close-panel" id="closePanelBtn">✕</button>
+            </div>
+
+            <div class="panel-content">
+                <div class="detail-section">
+                    <label>URL</label>
+                    <a id="nodeDetailUrl" href="#" target="_blank" class="node-url"></a>
+                </div>
+
+                <div class="detail-section">
+                    <label>Time Spent</label>
+                    <span id="nodeDetailDuration" class="detail-value"></span>
+                </div>
+
+                <div class="detail-section">
+                    <label>Depth</label>
+                    <span id="nodeDetailDepth" class="detail-value"></span>
+                </div>
+
+                <div class="detail-section" id="nodeDetailNoteSection">
+                    <label>Note</label>
+                    <p id="nodeDetailNote" class="note-text"></p>
+                </div>
+
+                <div class="detail-section" id="nodeDetailScreenshotSection">
+                    <label>Screenshot</label>
+                    <img id="nodeDetailScreenshot" class="screenshot-preview" alt="Page screenshot">
+                </div>
+
+                <div class="detail-actions">
+                    <button class="btn-secondary btn-sm" id="visitNodeBtn">Visit Page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../lib/d3.min.js"></script>
+    <script src="../db.js"></script>
+    <script src="../analyzer.js"></script>
+    <script src="visualization.js"></script>
+</body>
+
+</html>
